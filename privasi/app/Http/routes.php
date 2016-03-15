@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return View('home');
-});
+//Pindah ke dalam route::group
+//Route::get('/', function () {
+//    return View('home');
+//});
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +28,11 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => 'web'], function () {
-  
-  });
+    Route::get('/', 'Crudcontroller@home'); //Fungsinya kumasukkan ke controller agar rapi
+    Route::post('prosestambah','Crudcontroller@tambahdata');
+    Route::get('read','Crudcontroller@lihatdata');
+    Route::get('hapus/{id}', 'Crudcontroller@hapusdata');
+});
  
- Route::post('prosestambah','Crudcontroller@tambahdata');
- Route::get('read','Crudcontroller@lihatdata');
- Route::get('hapus/{id}', 'Crudcontroller@hapusdata');
+
  ?>
