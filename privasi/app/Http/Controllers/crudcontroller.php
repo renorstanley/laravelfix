@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Input;
 use View;
 class crudcontroller extends Controller
 {
+	//Fungsi untuk route::get('/')
+	public function home() {
+		return view('home');	
+	}
+	
  	public function tambahdata() {
  		$data= array(
  			'nama'  => Input::get('nama'),
@@ -37,8 +42,8 @@ class crudcontroller extends Controller
  		return View::make('read', compact('siswa'));
  		
  		//Cara 2, dengan array normal
- 		$data = DB::table('siswa')->get();
- 		return View::make('read', ['siswa' => $data ]);
+ 		//$data = DB::table('siswa')->get();
+ 		//return View::make('read', ['siswa' => $data ]);
  		
  		
  		//Jadi ceritanya gini, setelah form tambahdata di-post, masuk ke function tambahdata() di atas.
